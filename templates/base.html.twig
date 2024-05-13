@@ -12,18 +12,8 @@
         {% endblock %}
     </head>
     <body>
-        
-        {% block body %}
-        <div class="example-wrapper">
-            <h1>Base.html.twig</h1>
-        
-            TODO:
-            <ul>
-                <li>Navbar<li>
-                <li>Header</li>
-                <li>Footer</li>
-            </ul>
-        </div>
-        {% endblock %}
+        {% include "_components/_navbar.html.twig" %}
+
+        {% block body %}{% endblock %}
     </body>
 </html>

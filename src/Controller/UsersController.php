@@ -46,27 +46,20 @@ class UsersController extends AbstractController
 
             $this->em->persist($user);
             $this->em->flush();
-            // try {
-            //     //ajout du compte utilisateur
-            //     $this->usersService->create($user);
-                
-            //     //construction du corp du mail  
-            //     $body = $this->render('email/activation.html.twig', ["id" => $user->getId()]);
-            //     ////envoi du mail
-            //     //$this->emailService->sendEmail($user->getEmail(), "Activation du compte", $body->getContent());
-            //     $type = 'success';
-            //     $msg = 'Le compte a ete ajoute';
-      
-            // } catch (\Throwable $th) {
-            //     $msg = $th->getMessage();
-            //     $type = "danger";
-            // }
             
             //affichage du message
             $this->addFlash('success','user bien créé');
          }
         return $this->render('users/index.html.twig', [
             'formulaire' => $form->createView()
+        ]);
+    }
+
+    #[Route('/home', name: 'app_home')]
+    public function displayHome(): Response
+    {
+        return $this->render('users/home.html.twig', [
+            //'controller_name' => 'HousingController',
         ]);
     }
 }
