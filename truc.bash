@@ -1,3 +1,24 @@
+cd public_html
+
+mkdrir sharlene
+
+cd sharlene
+
+rm default.php
+
+git init
+
+git remote add origin https://github.com/EnelRahss/sharlene.git
+
+git pull origin master
+
+php composer.phar install
+
+php bin/console asset-map:compile
+
+php bin/console cache:clear
+
+
 $ symfony make:controller
 
 $ symfony make:entity

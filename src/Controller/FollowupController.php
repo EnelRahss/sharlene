@@ -13,11 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use App\Service\FollowupService;
 
 
 class FollowupController extends AbstractController
 {
-    public function __construct(private EntityManagerInterface $em, private FollowupRepository $repo){
+    public function __construct(
+        private readonly EntityManagerInterface $em, 
+        private readonly FollowupRepository $repo,
+        private readonly FollowupService $followupService){
 
     }
 
@@ -32,14 +36,15 @@ class FollowupController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted()){
+            //Nettoyage des données 
 
             try {
                 $verifDoublon = $this->repo->findOneBy(['title' => $follow->getTitle(), 'createAt' => $follow->getCreateAt()]);
 
                 if(!$verifDoublon){
                     $follow->setStatus(true);
-                    $this->em->persist($follow);
-                    $this->em->flush();
+                    //ajout du compte via le service
+                    $this->followupService->create($follow);
                     $type = 'success';
                     $message = 'Bien enregistré';
                 }
@@ -51,7 +56,6 @@ class FollowupController extends AbstractController
                 $type = 'danger';
             $message = $th->getMessage();           
             }
-
 
             $this->addFlash($type, $message);
 
