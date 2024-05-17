@@ -35,6 +35,9 @@ class Housing
     #[ORM\ManyToOne(inversedBy: 'housings')]
     private ?User $owner = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $name = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Housing
     public function setOwner(?User $owner): static
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }

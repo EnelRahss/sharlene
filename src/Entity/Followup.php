@@ -31,6 +31,9 @@ class Followup
     #[ORM\ManyToOne(inversedBy: 'followups')]
     private ?User $cleaner = null;
 
+    #[ORM\ManyToOne]
+    private ?Housing $housing = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Followup
     public function setCleaner(?User $cleaner): static
     {
         $this->cleaner = $cleaner;
+
+        return $this;
+    }
+
+    public function getHousing(): ?Housing
+    {
+        return $this->housing;
+    }
+
+    public function setHousing(?Housing $housing): static
+    {
+        $this->housing = $housing;
 
         return $this;
     }

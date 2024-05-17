@@ -2,19 +2,66 @@
 
 {% block title %}Hello FollowupController!{% endblock %}
 
+{% form_theme form 'tailwind_2_layout.html.twig' %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <turbo-frame id="the_frame_id">
+        <div class="space-y-12 my-5 mx-10">
+            <div class="border-b border-gray-900/10 pb-12">
+              <h2 class="text-base font-semibold leading-7 text-gold">Ajouter un suivi</h2>
+        
+        {{form_start(form)}}
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <div class="sm:col-span-3">
+                {{form_label(form.createAt)}} 
+                <div class="mt-2">
+                    {{form_widget(form.createAt)}} 
+                </div>
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Sharlene/Documents/SMS_conciergerie/sms/src/Controller/FollowupController.php</code></li>
-        <li>Your template at <code>C:/Users/Sharlene/Documents/SMS_conciergerie/sms/templates/followup/index.html.twig</code></li>
-    </ul>
-</div>
+            <div class="sm:col-span-3">
+                {{form_label(form.housing)}} 
+                <div class="mt-2">
+                    {{form_widget(form.housing)}} 
+                </div>
+            </div>
+
+            <div class="sm:col-span-3">
+                {{form_label(form.title)}}
+                <div class="mt-2">
+                    {{form_widget(form.title)}}              
+                </div>
+            </div>
+
+            <div class="sm:col-span-3">
+                {{form_label(form.cleaner)}} 
+                <div class="mt-2">
+                    {{form_widget(form.cleaner)}} 
+                </div>
+            </div>
+
+            <div class="col-span-full">
+                    {{form_label(form.content)}}
+                <div class="mt-2">
+                    {{form_widget(form.content)}}
+                </div>
+            </div>
+
+            <div class="sm:col-span-3">
+                {{form_label(form.price)}}
+                <div class="mt-2">
+                    {{form_widget(form.price)}}              
+                </div>
+            </div>
+
+            {{form_widget(form.valider)}}  
+      
+        </div>
+    </div>
+        
+        {{form_end(form)}}
+        {% include "_components/_toast.html.twig" %}
+    </turbo-frame>
+
 {% endblock %}
