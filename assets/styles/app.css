@@ -11,3 +11,8 @@ body {
 perso-margin {
     margin: 100px;
 }
+
+.mx-100 {
+    margin-left: 25%;
+    margin-right: 25%;
+  }

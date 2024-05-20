@@ -48,7 +48,7 @@ class UsersController extends AbstractController
             $this->em->flush();
             
             //affichage du message
-            $this->addFlash('success','user bien créé');
+            $this->addFlash('success','Le nouvel utilisateur a bien été ajouté');
          }
         return $this->render('users/index.html.twig', [
             'formulaire' => $form->createView()

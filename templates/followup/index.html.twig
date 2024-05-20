@@ -6,12 +6,12 @@
 
 {% block body %}
     <turbo-frame id="the_frame_id">
-        <div class="space-y-12 my-5 mx-10">
+        <div class="space-y-12 my-5 mx-100">
             <div class="border-b border-gray-900/10 pb-12">
               <h2 class="text-base font-semibold leading-7 text-gold">Ajouter un suivi</h2>
         
         {{form_start(form)}}
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
 
             <div class="sm:col-span-3">
                 {{form_label(form.createAt)}} 

@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Validator\Constraints\File;
+
 class RegisterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -20,12 +22,14 @@ class RegisterType extends AbstractType
         ->add('lastname', TextType::class, [
             'label' => 'Saisir votre nom',
             'required' => true,
-            'empty_data' => ''
+            'empty_data' => '',
+            'sanitize_html' => true,
         ])
         ->add('firstname', TextType::class, [
             'label' => 'Saisir votre prénom',
             'required' => true,
-            'empty_data' => ''
+            'empty_data' => '',
+            'sanitize_html' => true,
         ])
         ->add('email', EmailType::class, [
             'label' => 'Saisir votre email',
