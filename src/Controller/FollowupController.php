@@ -36,8 +36,6 @@ class FollowupController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted()){
-            //Nettoyage des données 
-
             try {
                 $verifDoublon = $this->repo->findOneBy(['title' => $follow->getTitle(), 'createAt' => $follow->getCreateAt()]);
 
