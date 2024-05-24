@@ -1,3 +1,4 @@
+symfony make:form
 cd public_html
 
 mkdrir sharlene
